@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Prediction</title>
+</head>
+<body style = " background-image : url('https://wallpaperaccess.com/full/2454628.png') ;background-size : fit;
+ color : white ;">
+   <div> 
+    <h2>iNeuron Internship Project </h2>
+       
+   </div> 
+    <div style = 'background-color : transparent;  text-align : center; font-size :25px; margin:0px; padding :0px; font-family: "Times New Roman", Times, serif;'>
+        <h1  >Adult census Income Prediction    </h1>
+    </div>
+    <div   style = " width : 60%; margin:0 8rem 2rem ; font-size : 1.5rem;" >
+       <h3 >  Problem Statement: </h3>
+            <p> The Goal is to predict whether a person has an income of more than 50K a year or not.
+            This is basically a binary classification problem where a person is classified into the>50K group or <=50K group.
+            </p>
+
+    <h3>Approach:</h3> 
+        <p>
+                The classical machine learning tasks like Data Exploration, Data Cleaning,
+                Feature Engineering, Model Building and Model Testing. Try out different machine
+                learning algorithms that’s best fit for the above case.
+            </p>
+    <a href = 'https://github.com/Niharikamalik/ineuron-project' style = 'color : white ; '> More Details.... </a>           
+    </div>
+    
+    <h4 style = "text-align : right "> By Niharika Malik </h4> 
+
+    <hr>
+    <div> 
+    <h1 style = " text-align : center ;" > Deployed Model 
+    </div>
+<div class = container style = "align-content: center; margin-top : 0%;"> 
+    <form action="{{ url_for('predict') }}" method="POST" style = " font-size : 20px; display = inline; margin :0% 10% ; ">
+        <label for="age"><b>AGE : </label>
+        <input type="number" id="age" name="age"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width:20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required><br>
+
+        <label type = "number" for="workclass"><b> WORKCLASS : </b></label>
+        <input id="workclass" name="workclass" min = '1' max = '3' style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;'required>
+            <p Style = " font-size : 15px;"> &#40 For Private enter  - 1</p>
+            <p  Style = " font-size : 15px;">For Self-employed enter - 2</p>
+            <p  Style = " font-size : 15px;">For Government enter - 3 &#41</p>
+            <!-- Add more options as needed -->
+        <br>
+
+        <label for="education_num"><b>EDUCATION NUMBER : </label>
+        <input type="number" id="education_num" name="education_num"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required><br>
+        <p>enter number between 1-16</p>
+
+        <label for="marital_status"><b>MARITAL STATUS : </label>
+        <input id="marital_status" name="marital_status" style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required>
+           <p Style = " font-size : 15px;"> &#40 Married - 1</p>
+           <p Style = " font-size : 15px;">  Un-Married - 0 &#41</p>
+        <br>
+
+        <label for="occupation"><b> OCCUPATION :</label>
+        <input id="occupation" name="occupation" style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required>
+            <p Style = " font-size : 15px;"> &#40 Prof-specialty       10<br>
+                Craft-repair        3<br>Exec-managerial      4<br> Adm-clerical         1<br>Sales               12<br>
+                Other-service        8<br>Machine-op-inspct    7<br>Transport-moving     0<br> Handlers-cleaners    14<br>
+                Farming-fishing      6<br>Tech-support         5<br>
+                Protective-serv      13  Priv-house-serv      11<br>
+                Armed-Forces          9 <br>Blue-collar<br>Service &#41 </p>
+            <!-- Add more options as needed -->
+        </select><br>
+
+        <label for="capital_gain"><B>CAPITAL GAIN :</label>
+        <input type="number" id="capital_gain" name="capital_gain"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;'  required><br>
+
+
+        <label for="capital_loss"><b>CAPITAL LOSS : </label>
+        <input type="number" id="capital_loss" name="capital_loss"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width:20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required><br>
+
+        <label for="hours_per_week"><B> HOURS PER WEEK : </label>
+        <input type="number" id="hours_per_week" name="hours_per_week"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required><br>
+
+        
+            <!-- Add more options as needed -->
+        </select><br>
+        <label for="sex"><B> GENDER : </label>
+        <input id="sex" name="sex"  style = 'background: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 20rem;
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid grey;' required>
+            <p Style = " font-size : 15px;"> &#40 Male - 1</p>
+            <p Style = " font-size : 15px;"> Female - 0 &#41</p>
+
+            <br>
+        <button type="submit" href = "/predict" style = "display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;" > PREDICT </button>
+        
+        </input>
+    </form>
+    <p  style = 'background-color : #ed0202; text-align : center; font-size :40px; font-family: Times New Roman, Times, serif;'> {{result}}<p>
+</div>    
+</body>
+</html>
